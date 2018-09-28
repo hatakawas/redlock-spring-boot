@@ -1,8 +1,6 @@
 language: java
 jdk:
   - oraclejdk8
-services:
-  - redis-server
 install: true
 script:
   - ./mvnw clean install
@@ -10,3 +8,5 @@ script:
 cache:
   directories:
     - $HOME/.m2
+services:
+  - redis-server
