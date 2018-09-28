@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
@@ -14,17 +15,7 @@ import org.springframework.context.ApplicationContext;
  */
 @SpringBootApplication
 public class IntegrationTests {
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    public void contextLoads() {
-
-        String[] beans = context.getBeanDefinitionNames();
-        Arrays.sort(beans);
-        for (String bean : beans) {
-            System.out.println(bean);
-        }
-
+    public static void main(String[] args) {
+        SpringApplication.run(IntegrationTests.class, args);
     }
 }

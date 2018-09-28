@@ -34,16 +34,9 @@ public class RedisLockTests {
     }
 
     @Test
-    public void holdKey() {
-        // 每 1 秒刷新一次过期时间
-        redisLockService.hold("lockKey", 30, TimeUnit.SECONDS);
-    }
-
-    @Test
     public void testHoldScript() {
         redisService.executeHold("lockKey", "lockValue", 10000);
     }
-
 
 
 }

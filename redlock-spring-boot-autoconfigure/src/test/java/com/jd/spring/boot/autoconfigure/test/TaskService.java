@@ -15,10 +15,10 @@ import com.lomagicode.redlock.spring.boot.autoconfigure.RedisLock;
 @Component
 public class TaskService {
 
-    @RedisLock(lockKey = "lockKey", expire = 9, timeUnit = TimeUnit.SECONDS)
+    @RedisLock(lockKey = "lockKey", expire = 3, timeUnit = TimeUnit.SECONDS)
     public void doTask() {
         System.out.println("=========> Start...");
-        sleep(10, TimeUnit.SECONDS);
+        sleep(5, TimeUnit.SECONDS);
         System.out.println("=========> Finish...");
     }
 
