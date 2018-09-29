@@ -13,7 +13,7 @@ Distributed redis lock implemented and integrated with spring boot.
 To use redlock-spring-boot-starter, you import dependency into your POM.xml:
 ````xml
 <dependency>
-    <groupId>com.jd.spring.boot</groupId>
+    <groupId>com.lomagicode.spring.boot</groupId>
     <artifactId>redlock-spring-boot-starter</artifactId>
     <version>${spring-boot-redlock.version}</version>
 </dependency>
