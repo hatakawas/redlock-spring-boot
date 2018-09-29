@@ -35,3 +35,4 @@ gen
 # Created by author manually
 *~
 .DS_Store
+dump.rdb
