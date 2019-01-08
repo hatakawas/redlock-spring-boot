@@ -48,6 +48,7 @@ public class RedisLockServiceBean implements RedisLockService {
         releaseScript.setResultType(Boolean.class);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public boolean acquire(String lockKey, long expire, TimeUnit timeUnit) {
         return redisTemplate.execute((RedisCallback<Boolean>) connection -> {
@@ -78,10 +79,10 @@ public class RedisLockServiceBean implements RedisLockService {
         }, delay, delay, TimeUnit.MILLISECONDS);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public boolean release(String lockKey) {
         final String lockValue = value.get();
-//        return redisTemplate.execute(releaseScript, Collections.singletonList(lockKey), lockValue);
         return redisTemplate.execute((RedisCallback<Boolean>) connection -> connection.scriptingCommands()
                 .eval(
                         LettuceConverters.toBytes(releaseScript.getScriptAsString()),
@@ -92,10 +93,10 @@ public class RedisLockServiceBean implements RedisLockService {
                 ));
     }
 
+    @SuppressWarnings("ConstantConditions")
     private boolean refreshExpire(String lockKey, String lockValue, long expireInMillis) {
         LOGGER.debug("lockKey={}, lockValue={}, expireInMillis={}", lockKey, lockValue, expireInMillis);
-//        Boolean result = redisTemplate.execute(holdScript, Collections.singletonList(lockKey), lockValue, expireInMillis);
-        Boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> connection.scriptingCommands()
+        boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> connection.scriptingCommands()
                 .eval(
                         LettuceConverters.toBytes(holdScript.getScriptAsString()),
                         ReturnType.BOOLEAN,

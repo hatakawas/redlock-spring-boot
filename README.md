@@ -1,8 +1,8 @@
-redlock-spring-boot-starter
-===========================
+redlock-spring-boot
+===================
 
-[![Build Status](https://travis-ci.org/hatakawas/redlock-spring-boot-starter.svg?branch=master)](https://travis-ci.org/hatakawas/redlock-spring-boot-starter)
-[![codecov](https://codecov.io/gh/hatakawas/redlock-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/hatakawas/redlock-spring-boot-starter)
+[![Build Status](https://travis-ci.org/hatakawas/redlock-spring-boot-starter.svg?branch=master)](https://travis-ci.org/hatakawas/redlock-spring-boot)
+[![codecov](https://codecov.io/gh/hatakawas/redlock-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/hatakawas/redlock-spring-boot)
 
 Distributed redis lock implemented and integrated with spring boot.
 
@@ -28,7 +28,11 @@ Redlock-spring-boot is very easy-to-use, it exposed a @RedisLock annotation whic
 public class Example {
     @RedisLock(lockKey="your-lock-key", expire=10, timeUnit=TimeUnit.SECONDS)
     public void doTask() {
-        // Do some task...
+        try {
+            // Do some task...
+        } catch (Exception e) {
+            // Handle exception.
+        }
     } 
 }
 ```
@@ -36,7 +40,11 @@ public class Example {
 With above code, when you call `Example#doTask()`, it will try to aquire and hold the lock before really executing the method.
 if it failed to aquire the lock, the method wouldn't be executed which was as expected.
 
-> What should be noticed, because `@RedisLock` is implemented with spring aop, the `Example` class
+### What should be noticed
+
+> Because `@RedisLock` is implemented with spring aop, the `Example` class
 should must be a spring containered bean.
+
+> Exception in code wrapped with `@RedisLock` annotation MUST be caught and handled.
 
 That's all, enjoy it!
