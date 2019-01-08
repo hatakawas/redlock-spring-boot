@@ -1,19 +1,20 @@
 language: java
-sudo: false # faster builds
-
+sudo: false
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 install: true
-
 script:
-  - ./mvnw clean install
+- "./mvnw clean install"
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
+- bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
-    - $HOME/.m2
-
-services:
-  - redis-server
+  - "$HOME/.m2"
+env:
+  global:
+  - # OSSRH_DEPLOY_USERNAME
+  - secure: d6B0cUTdVwFdZm2CHUjoexyiE9XgjKigbqMKyP6lqVcBPY1Z37SNBjA5WTT86zsk4WjLEED5l/fB8LJ4IwNDH12PEY7g0Ww7dR1KRLNbgmaNmAfMKrnUh1Z3H02WbMU5lZdW5hOyCOUEJUJb43GL1y65aXXRs1zily21Sn4bfRuPJYR6gd3QhMiTWl+I521BbqbXvsPDPeSKJBH1KN1/rIX38jxRGwr305USKjUXWdzKTSlP8uNfrrSOq3kvMzijNC5kFZAS+S4a0y+TIzBwM6n+YG5ZR6JZEWz7Xm/XVHqKJqjITLZ+c+sjiKtWve2XGUgld++iwkveY0PXIiOP8R7OCfsQyMbEC0jOnNOicoqgbZccPox4HdmKdwc8GtmZxL8dP811b5DaGVAgZncznE9mPKLsiz91hy4aHYrH/N5Zyeaqv0Zb3f94eGR9LtwCJjiy3JTVJZwEZnM6tHi0kGOldQGohZctvFfCo5+INGDMj1+WGVNNNpM+s587G3uwQG8aBn1ARi8iy5KP9r8dRhSsRQpj/CIU7Sn9y0LwQLtDWBt9B4mPxdzvy5JbwOAIPwvMBcul/T51UP6fTHHFGdp/DoPf3qwW+w23BW1L+p4uHEt7PHl32NgcfDS+sn+k8Cn2GLvZu1+n6kV9ApeYxK2WmXyyb609Ja1ET3QIwpI=
+  - # OSSRH_DEPLOY_PASSWORD
+  - secure: VAOiiKDymRY2/7eafLOWGpg6+m4Cv092s0RM7hiAZy58HO4Z/KYWp/6rSBcOA/4LVkijNUURtlz16SctTMiIRWonafnctyHsF5Rk0wXPqsBVAgj61l9fRR2UHxD+2Sq0OOBGQp4QByJ7tdyzU962g8gHdTTnKRHq7gpcVPWA5IriiolyYtBrys8DAPmDOyPfjpyJZQkTBr+jE5hesgjdjKGCJ4x8QRyYXwoFtVdKet5OGgTmJDBJKIhOZy0j/zz7e0Isz3JEQBIXT30AkxJ0EMGsOjGnHNs81gaPwfxRM3Z/y6ioalLV/Cdn1MFQAKz5W31DiUj7ayAviSEeuDaWf6SSXQssHB/zmSZHghe7VmeTiteK8Qe3TS2YnwfIvE4k9bofqXEXIHn6C85jkKDUtmmK00ilXbil7E8rTgL1b49Nvka+FiNhenVTne9mRh1Gl14m63M708UtXErgTflhCAUzjcuXyGjxdDB+IOkOMF2hniOgQiwS9RMxKAHAz8scf7ekeos0pU03imvIJnDhW6hr3mvQY/zfdMM5vYndIptorl38c7WtSAFrDmMvNcXUO8Uk7y7iMCGGfU3qqw9oQODTKMeGkQbe0gEQTiIupJu+S47DQwASKMKL6rAIEwJVpDvCeN5Xh96V+LxB1LnkloRVgvw7ljaB+wRfOIe6jd8=
+  - # GPG_PASSPHRASE
+  - secure: vL4z/g2S0Ena2V/Juq+fW6IluxsP1L5xVE2pXJV1izJFxCnv4z4XYp/odWDEu8btxfZBV/a0Aza0P1ZsEpM7DWq8+ZuN4WBueqXp6jGujDt77Ca705xobdPR3ELIULOQpfue1M4kbWuemLmTOOBNYNN2/t9rPYcRbHaS2UhNonylFAytCgLGhEsi3UyBjupe6md0hQuTdaICQ99mxTYDkCW4HOGp04VGoTjNhX2qw0LEsjnfias75cpr4n37BmoLH59F2ql4azHMKMjOfV1mx9UXnf8Gu8jIFDcI8NjFVYAu6ytycjE7G1Wfg+4QYYxlVcnDGP6z9JGf9n+oNcdKBtn9X1tmjFhxQBX81OEbIaJviwXTpvm+iINFYWAlEi2q/1/xYaacROP7vEiaO8Shw9c0KXuzauXcm/pTk8XzVoAUPmy+08LbqTBMbqprPwH750OmsAfTOweBbTr/t8M4eyzgPRFzWvixtb1xwKqDHibPU7BnhUvu0pxR0oH4ROjYPq6Zv0ht3oGMtOczTVLMtG2jvCUTm9MKoksmOsIbONS581p0+thyFphPesVZjvbXMtih7RpOpZeeLCWbAUyds147RZavOtxTXnR2okk7O3Ypc9NwAeN+kqrE18xCCk345k1rk9ARX7frulGNYMMhvrpVIfGkjaq9nekYsNvrF9E=

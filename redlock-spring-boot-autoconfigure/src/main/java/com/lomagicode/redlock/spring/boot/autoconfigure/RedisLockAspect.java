@@ -36,10 +36,10 @@ public class RedisLockAspect {
         TimeUnit timeUnit = redisLock.timeUnit();
         boolean lockAquired = redisLockService.acquire(redisLock.lockKey(), redisLock.expire(), timeUnit);
         if (!lockAquired) {
-            LOGGER.warn("Failed to aquire redis lock.");
+            LOGGER.warn("Failed to acquire redis lock.");
             return null;
         } else  {
-            LOGGER.info("Aquired redis lock successfully.");
+            LOGGER.info("Acquired redis lock successfully.");
         }
         redisLockService.hold(redisLock.lockKey(), redisLock.expire(), timeUnit);
 
