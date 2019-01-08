@@ -1,8 +1,8 @@
 redlock-spring-boot
 ===================
 
-[![Build Status](https://travis-ci.org/hatakawas/redlock-spring-boot-starter.svg?branch=master)](https://travis-ci.org/hatakawas/redlock-spring-boot)
-[![codecov](https://codecov.io/gh/hatakawas/redlock-spring-boot-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/hatakawas/redlock-spring-boot)
+[![Build Status](https://travis-ci.org/hatakawas/redlock-spring-boot.svg?branch=master)](https://travis-ci.org/hatakawas/redlock-spring-boot)
+[![codecov](https://codecov.io/gh/hatakawas/redlock-spring-boot/branch/master/graph/badge.svg)](https://codecov.io/gh/hatakawas/redlock-spring-boot)
 
 Distributed redis lock implemented and integrated with spring boot.
 
