@@ -1,16 +1,19 @@
-dist: trusty
 language: java
-sudo: false
+
 jdk:
-  - oraclejdk8
-install: true
+  - openjdk8
+
+
 script:
   - "./mvnw clean install"
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+
 cache:
   directories:
     - "$HOME/.m2"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 env:
   global:
     - # OSSRH_DEPLOY_USERNAME
